@@ -1,0 +1,172 @@
+1.Trigger para registrar modificaciones en una tabla de historial
+
+CREATE TRIGGER trg_clientes_update
+BEFORE UPDATE ON clientes
+FOR EACH ROW
+INSERT INTO clientes_hist (
+    id_clientes_hist, cliente_id, dni, nombre, apellido, email, telefono, direccion,
+    municipio_id, distrito_id, departamento_id, tipo_cliente,
+    fecha_creacion, ultima_modificacion, creado_por, modificado_por
+)
+VALUES (
+    NULL, OLD.cliente_id, OLD.dni, OLD.nombre, OLD.apellido, OLD.email, OLD.telefono, OLD.direccion,
+    OLD.municipio_id, OLD.distrito_id, OLD.departamento_id, OLD.tipo_cliente,
+    OLD.fecha_creacion, NOW(), OLD.creado_por, OLD.modificado_por
+);
+
+2. Trigger para actualizar el stock de un producto después de una venta
+
+CREATE TRIGGER trg_update_stock_after_sale
+AFTER INSERT ON detalle_orden
+FOR EACH ROW
+UPDATE producto
+SET stock = stock - NEW.cantidad_producto
+WHERE producto_id = NEW.producto_id;
+
+3. Trigger para reponer stock tras una devolución
+
+CREATE TRIGGER trg_devolucion_stock
+AFTER INSERT ON devolucion_compras
+FOR EACH ROW
+UPDATE producto
+SET stock = stock + NEW.cantidad
+WHERE producto_id = NEW.producto_id;
+
+4. Trigger para registrar la fecha de modificación
+
+CREATE TRIGGER trg_actualiza_fecha_mod
+BEFORE UPDATE ON empleados
+FOR EACH ROW
+SET NEW.ultima_modificacion = NOW();
+
+5. Trigger para validar datos antes de insertar
+
+CREATE TRIGGER trg_validar_precio
+BEFORE INSERT ON producto
+FOR EACH ROW
+BEGIN
+    IF NEW.precio < 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'El precio no puede ser negativo.';
+    END IF;
+END;
+
+6. Trigger para registrar auditoría de empleados
+
+CREATE TRIGGER trg_auditoria_empleados
+AFTER UPDATE ON empleados
+FOR EACH ROW
+INSERT INTO modificaciones (tabla, id_registro, usuario, fecha_modificacion)
+VALUES ('empleados', NEW.empleado_id, CURRENT_USER(), NOW());
+
+1. Registrar cambios en una tabla de historial
+
+CREATE TRIGGER trg_backup_before_update
+BEFORE UPDATE ON tabla_principal
+FOR EACH ROW
+INSERT INTO tabla_historial
+VALUES (OLD.id, OLD.campo1, OLD.campo2, NOW());
+
+2. Actualizar fecha de modificación automáticamente
+
+CREATE TRIGGER trg_update_fecha_mod
+BEFORE UPDATE ON tabla_datos
+FOR EACH ROW
+SET NEW.ultima_modificacion = NOW();
+
+3. Controlar cambios en un campo importante
+
+CREATE TRIGGER trg_verificar_cambio_estado
+BEFORE UPDATE ON tabla_pedidos
+FOR EACH ROW
+BEGIN
+    IF OLD.estado = 'Enviado' AND NEW.estado != 'Enviado' THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se puede cambiar el estado de un pedido enviado.';
+    END IF;
+END;
+
+4. Registrar quién realizó la modificación
+
+CREATE TRIGGER trg_registrar_usuario_mod
+BEFORE UPDATE ON tabla_empleados
+FOR EACH ROW
+SET NEW.modificado_por = CURRENT_USER();
+
+5. Evitar reducción de valor crítico
+
+CREATE TRIGGER trg_evitar_disminucion_saldo
+BEFORE UPDATE ON cuentas
+FOR EACH ROW
+BEGIN
+    IF NEW.saldo < OLD.saldo THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se permite disminuir el saldo directamente.';
+    END IF;
+END;
+
+6. Registrar cambios importantes en tabla de auditoría
+
+CREATE TRIGGER trg_auditoria_update
+AFTER UPDATE ON tabla_general
+FOR EACH ROW
+INSERT INTO auditoria (tabla, id_registro, accion, fecha_accion, usuario)
+VALUES ('tabla_general', NEW.id, 'UPDATE', NOW(), CURRENT_USER());
+
+1. Respaldar registros antes de eliminarlos
+
+CREATE TRIGGER trg_backup_before_delete
+BEFORE DELETE ON tabla_principal
+FOR EACH ROW
+INSERT INTO tabla_respaldo
+VALUES (OLD.id, OLD.campo1, OLD.campo2, NOW());
+
+
+2. Impedir eliminación de registros activos
+
+CREATE TRIGGER trg_prevenir_borrado_activos
+BEFORE DELETE ON tabla_usuarios
+FOR EACH ROW
+BEGIN
+    IF OLD.estado = 'Activo' THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se pueden eliminar usuarios activos.';
+    END IF;
+END;
+
+3. Registrar eliminación en tabla de auditoría
+
+CREATE TRIGGER trg_auditoria_delete
+AFTER DELETE ON tabla_general
+FOR EACH ROW
+INSERT INTO auditoria (tabla, id_registro, accion, fecha_accion, usuario)
+VALUES ('tabla_general', OLD.id, 'DELETE', NOW(), CURRENT_USER());
+
+4. Actualizar conteo de registros relacionados
+
+CREATE TRIGGER trg_actualizar_conteo_delete
+AFTER DELETE ON tabla_detalle
+FOR EACH ROW
+UPDATE tabla_maestro
+SET total_items = total_items - 1
+WHERE id = OLD.id_maestro;
+
+5. Evitar eliminación si tiene dependencias
+
+CREATE TRIGGER trg_prevenir_borrado_dependencias
+BEFORE DELETE ON tabla_padre
+FOR EACH ROW
+BEGIN
+    IF (SELECT COUNT(*) FROM tabla_hija WHERE id_padre = OLD.id) > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se puede eliminar el registro porque tiene datos dependientes.';
+    END IF;
+END;
+
+6. Registrar fecha y usuario que eliminó un registro
+
+CREATE TRIGGER trg_log_delete
+AFTER DELETE ON tabla_datos
+FOR EACH ROW
+INSERT INTO log_eliminaciones (id_registro, fecha_eliminacion, usuario)
+VALUES (OLD.id, NOW(), CURRENT_USER());
