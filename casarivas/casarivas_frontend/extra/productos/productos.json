@@ -1,6 +1,34 @@
 [
-{"id":"c001","titulo":"Cable Cobre 1m","categoria":"CB","precio":
-12.5,"imagen":"../extra/productos/img_prod/c001.jpg"},
+{"id":"c001",
+"titulo":"Cable Cobre 1m",
+"categoria":"CB",
+"precio":12.5,
+"imagen":"../extra/productos/img_prod/c001.jpg"
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {"id":"c002","titulo":"Cable HDMI 2m","categoria":"VD","precio":
 18.0,"imagen":"../extra/productos/img_prod/c002.jpg"},
 {"id":"c003","titulo":"Connector BNC","categoria":"EL","precio":
