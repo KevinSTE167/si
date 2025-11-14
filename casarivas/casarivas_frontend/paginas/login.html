@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Iniciar Sesión</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header class="header">
+<div class="top">
+<div class="logo">Casa Rivas Electrónica</div>
+<nav>
+<ul class="nav-links">
+<li><a class="boton-menu" href="./index.html">Inicio</a></li>
+<li><a class="boton-menu" href="./catalogo.html">Catálogo</a></li>
+<li><a class="boton-menu" href="./carrito.html">Carrito <span
+class="numero">0</span></a></li>
+<li><a class="boton-menu active" href="./login.html">Iniciar Sesión</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class="auth-box">
+<h2>Iniciar Sesión</h2>
+<form id="loginForm">
+<label>Correo electrónico</label>
+<input id="correo" type="email" required />
+<label>Contraseña</label>
+<input id="contrasena" type="password" required />
+<button type="submit">Iniciar sesión</button>
+</form>
+<p>¿No tienes cuenta? <a href="./registro.html">Regístrate aquí</a></p>
+<p id="error-msg" style="color:#e53e3e"></p>
+</div>
+</main>
+<footer class="footer">© 2025 Casa Rivas</footer>
+<script src="../js/auth.js"></script>
+</body>
+</html>

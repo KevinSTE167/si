@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Registro</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header class="header">
+<div class="top">
+<div class="logo">Casa Rivas Electrónica</div>
+<nav>
+<ul class="nav-links">
+<li><a class="boton-menu" href="./index.html">Inicio</a></li>
+<li><a class="boton-menu" href="./catalogo.html">Catálogo</a></li>
+<li><a class="boton-menu" href="./carrito.html">Carrito <span
+class="numero">0</span></a></li>
+<li><a class="boton-menu active" href="./registro.html">Registro</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class="auth-box">
+<h2>Crear Cuenta</h2>
+<form id="registerForm">
+<label>Nombre</label>
+<input id="nombre" type="text" required />
+<label>Correo</label>
+<input id="correo" type="email" required />
+<label>Contraseña</label>
+<input id="contrasena" type="password" required />
+<label>Dirección</label>
+<input id="direccion" type="text" />
+<label>Teléfono</label>
+<input id="telefono" type="text" />
+<button type="submit">Registrar</button>
+</form>
+<p id="success-msg" style="color:green"></p>
+<p id="error-msg" style="color:#e53e3e"></p>
+</div>
+</main>
+<footer class="footer">© 2025 Casa Rivas</footer>
+<script src="../js/auth.js"></script>
+</body>
+</html>

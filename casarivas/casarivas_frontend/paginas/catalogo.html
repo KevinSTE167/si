@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Catálogo - Casa Rivas</title>
+<link rel="shortcut icon" href="../extra/logo.ico">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header class="header">
+<div class="top">
+<div class="logo">Casa Rivas Electrónica</div>
+<nav>
+<ul class="nav-links">
+<li><a class="boton-menu" href="./index.html">Inicio</a></li>
+<li><a class="boton-menu active" href="./catalogo.html">Catálogo</a></li>
+<li><a class="boton-menu" href="./carrito.html">Carrito <span
+class="numero">0</span></a></li>
+<li><a class="boton-menu" href="./login.html">Iniciar Sesión</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="container">
+<aside>
+<nav>
+<ul class="categoria">
+<li><button id="all" class="categoria-boton todo active">Todos los productos</button></li>
+<li><button id="AU" class="categoria-boton">Audio</button></li>
+<li><button id="CB" class="categoria-boton">Cableado</button></li>
+<li><button id="CP" class="categoria-boton">Computación</button></li>
+<li><button id="HE" class="categoria-boton">Herramientas</button></li>
+<li><button id="IL" class="categoria-boton">Iluminación</button></li>
+<li><button id="EN" class="categoria-boton">Energía</button></li>
+<li><button id="TL" class="categoria-boton">Telefonía</button></li>
+<li><button id="EL" class="categoria-boton">Electrónica</button></li>
+<li><button id="SG" class="categoria-boton">Seguridad</button></li>
+<li><button id="VD" class="categoria-boton">Video</button></li>
+</ul>
+</nav>
+</aside>
+<main style="flex:1">
+<h2 id="main-title">Todos los productos</h2>
+<div class="catalog-controls">
+<input id="searchBar" placeholder="Buscar producto..." />
+<div class="sorts">
+<button id="btn-desc">Mayor precio</button>
+<button id="btn-asc">Menor precio</button>
+</div>
+</div>
+<section id="contenedor-prod" class="contenedor-prod"></section>
+<div class="footer">© 2025 Casa Rivas</div>
+</main>
+</div>
+<script src="../js/catalog.js"></script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

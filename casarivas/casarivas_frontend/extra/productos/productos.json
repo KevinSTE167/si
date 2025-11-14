@@ -1,0 +1,14 @@
+[
+{"id":"c001","titulo":"Cable Cobre 1m","categoria":"CB","precio":
+12.5,"imagen":"../extra/productos/img_prod/c001.jpg"},
+{"id":"c002","titulo":"Cable HDMI 2m","categoria":"VD","precio":
+18.0,"imagen":"../extra/productos/img_prod/c002.jpg"},
+{"id":"c003","titulo":"Connector BNC","categoria":"EL","precio":
+4.0,"imagen":"../extra/productos/img_prod/c003.jpg"},
+{"id":"c004","titulo":"Switch 8 puertos","categoria":"EN","precio":
+45.0,"imagen":"../extra/productos/img_prod/c004.jpg"},
+{"id":"c005","titulo":"Canaleta 1m","categoria":"CP","precio":
+2.5,"imagen":"../extra/productos/img_prod/c005.jpg"},
+{"id":"c006","titulo":"Cable CAT6 10m","categoria":"CB","precio":
+30.0,"imagen":"../extra/productos/img_prod/test.jpg"}
+]
