@@ -8,24 +8,24 @@
 <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<header class="header">
-<div class="top">
+<header class="nav-pagina">
 <div class="logo">Casa Rivas Electrónica</div>
 <nav>
 <ul class="nav-links">
 <li><a class="boton-menu active" href="./index.html">Inicio</a></li>
 <li><a class="boton-menu" href="./catalogo.html">Catálogo</a></li>
-<li><a class="boton-menu" href="./carrito.html">Carrito <span
-class="numero">0</span></a></li>
+<li><a class="boton-menu cart" href="./carrito.html">Carrito <span class="numero">0</span></a></li>
 <li><a class="boton-menu" href="./login.html">Iniciar Sesión</a></li>
 </ul>
 </nav>
-</div>
 </header>
-<main style="padding:40px;text-align:center;">
-<h1>Bienvenido a Casa Rivas</h1>
-<p>Prototipado extremo — Fase 2: Interfaz</p>
-<p><a href="./catalogo.html">Ir al catálogo</a></p>
+<main style="text-align:center;">
+    <h1 class="main-title" style="margin-bottom: 1.5rem;">Bienvenido a Casa Rivas</h1>
+    <p style="font-size:1.2rem; margin-top:20px;">
+        <a href="./catalogo.html" style="color:var(--clr-font-w); background: var(--clr-main-b); padding: 12px 25px; border-radius: 8px; font-weight: bold; display: inline-block; transition: background 0.2s;" onmouseover="this.style.background='var(--clr-extra)';" onmouseout="this.style.background='var(--clr-main-b)';">
+            Explorar el Catálogo &rarr;
+        </a>
+    </p>
 </main>
 <footer class="footer">© 2025 Casa Rivas</footer>
 <script src="../js/auth.js"></script>

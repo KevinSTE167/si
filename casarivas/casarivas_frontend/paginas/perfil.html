@@ -4,28 +4,32 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Perfil</title>
+<link rel="shortcut icon" href="../extra/logo.ico">
 <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<header class="header">
-<div class="top">
+<header class="nav-pagina">
 <div class="logo">Casa Rivas Electrónica</div>
 <nav>
 <ul class="nav-links">
 <li><a class="boton-menu" href="./index.html">Inicio</a></li>
 <li><a class="boton-menu" href="./catalogo.html">Catálogo</a></li>
-<li><a class="boton-menu" href="./carrito.html">Carrito</a></li>
+<li><a class="boton-menu cart" href="./carrito.html">Carrito <span class="numero">0</span></a></li>
 <li><a class="boton-menu active" href="./perfil.html">Perfil</a></li>
 </ul>
 </nav>
-</div>
 </header>
 <main>
-<div class="auth-box">
-<h2>Mi Perfil</h2>
-<p id="nombre-usuario"></p>
-<button id="logoutBtn">Cerrar sesión</button>
-</div>
+    <div class="auth-box">
+        <h2>Mi Perfil</h2>
+        <div style="margin-bottom: 25px;">
+            <p style="font-size: 1.1rem; color:var(--clr-text-main); font-weight: 700;">
+                <span id="nombre-usuario" style="display:block;">Cargando Nombre...</span>
+            </p>
+            <p style="color:var(--clr-main-nav); font-size:0.9rem;">¡Bienvenido de vuelta!</p>
+        </div>
+        <button id="logoutBtn">Cerrar sesión</button>
+    </div>
 </main>
 <footer class="footer">© 2025 Casa Rivas</footer>
 <script src="../js/auth.js"></script>

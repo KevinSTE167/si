@@ -4,29 +4,39 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Carrito - Casa Rivas</title>
+<link rel="shortcut icon" href="../extra/logo.ico">
 <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<header class="header">
-<div class="top">
+<header class="nav-pagina">
 <div class="logo">Casa Rivas Electrónica</div>
 <nav>
 <ul class="nav-links">
 <li><a class="boton-menu" href="./index.html">Inicio</a></li>
 <li><a class="boton-menu" href="./catalogo.html">Catálogo</a></li>
-<li><a class="boton-menu active" href="./carrito.html">Carrito</a></li>
+<li><a class="boton-menu active cart" href="./carrito.html">Carrito <span class="numero">0</span></a></li>
 <li><a class="boton-menu" href="./login.html">Iniciar Sesión</a></li>
 </ul>
 </nav>
-</div>
 </header>
-<main style="padding:20px">
-<h1>Tu Carrito</h1>
-<section id="carrito-container" class="carrito-grid"></section>
-<aside class="resumen">
-<h3>Total a pagar: <span id="total-general">$0.00</span></h3>
-<button id="btn-comprar">Finalizar compra</button>
-</aside>
+<main>
+    <h1 class="main-title" style="margin-bottom: 2rem;">Tu Carrito de Compras</h1>
+    <div class="contenedor-carrito">
+        <section id="carrito-container" class="carrito-productos">
+            </section>
+        
+        <div id="carrito-resumen">
+            <div class="carrito-acciones">
+                <button id="btn-vaciar" class="carrito-acciones-vaciar">Vaciar Carrito</button>
+                <div class="carrito-acciones-derecha">
+                    <div class="carrito-acciones-total">
+                        Total: <span id="total-general">$0.00</span>
+                    </div>
+                    <button id="btn-comprar" class="carrito-acciones-comprar">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 <footer class="footer">© 2025 Casa Rivas</footer>
 <script src="../js/cart.js"></script>
